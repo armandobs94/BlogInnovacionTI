@@ -54,7 +54,7 @@
 			<div class="col-md-12 p-titulo"><h1>Blog de Innovacion y TI</h1></div>
 			<div class="col-md-12 p-menu">
 				<ul class="nav nav-tabs">
-				  <li role="presentation" class="active"><a href="http://localhost/Costume/"><img src="images/home78.png"></a></li>
+				  <li role="presentation" class="active"><a href=""><img src="images/home78.png"></a></li>
 				  <li role="presentation" id="secUno"><a>Noticias</a></li>
 				  <li role="presentation" id="secDos"><a>Comentarios</a></li>
 				  <li role="presentation" id="Acercade"><a>Acerca de</a></li>		
