@@ -2,7 +2,7 @@
     date_default_timezone_set("America/Mexico_City");
     $hora = date("H:i:s");
     $fecha = date("Y-m-d");
-
+    $id = $_GET['id'];
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
             <div id="datosAutor">
                 <div id="pImage" class="text-center"> 
                     <img src="images/developers/kirito.jpg" class="img-circle" alt="myImage" style="width:150px; height:170px;"><hr>
-                    <p class="text-primary" id="nombreAutor"><a href="#">Alberto Alonzo</a></p>
+                    <p class="text-primary" id="nombreAutor"><a href="#">Alberto Alonzo <?php echo $id ?></a></p>
                 </div>
                 <p class="text-justify" id="aboutAutor">
                     Esta es una pequeña descripcion acerca de mi

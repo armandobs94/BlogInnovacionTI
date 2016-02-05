@@ -63,8 +63,8 @@
 			<!--<div class="col-md-12 p-sesion"><b>Pedro Fernández Palominos</b> | <a href="#">SALIR</a></div>-->
 		</div>
 
-
-		<div class="row p-contenido">
+		<!-- Aqui se mostrará todo el contenido -->
+		<div class="row p-contenido" id="contentsView">
 			<!-- Columna izquierda -->
 			<div class="col-md-0 p-izquierda">
 				
@@ -96,7 +96,7 @@
 				
 			</div>
 
-		</div>
+		</div><!--termina contenido principal  -->
 		<div class="row p-inferior">
 			<div class="col-md-12 p-content"></div>
 		</div>

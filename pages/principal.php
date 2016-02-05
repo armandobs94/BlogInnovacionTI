@@ -3,9 +3,10 @@
     $hora = date("H:i:s");
     $fecha = date("Y-m-d");
     #include_once("../../php/conexion.php");
-
+    $id_post="";
+    $ruta ="pages/autorPost.php?id=".$id_post;
     $title = "Roflmao cachorros";
-    $des = "text textdomain( texttexttexttexttexttexttexttexttexttexttexttexttexttext
+    $resumen = "text textdomain( texttexttexttexttexttexttexttexttexttexttexttexttexttext
         texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
         texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
         texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext)
@@ -15,20 +16,23 @@ text textdomain( texttexttexttexttexttexttexttexttexttexttexttexttexttext
         texttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttexttext
         http_negotiate_language(supported)
         fkwjef headers_list(oid)";
+
+    $url_img="images/developers/yoop.jpg";
+    $name_autor="Alberto Alonzo";
+
 ?>
 
 
 <div id="comentarios">
 
-    <div id="contenedor">
-    <!-- Contenedor de solo un post -->                
+    <div id="contenedor"> <!-- Contenedor de solo un post -->    
         <div class="row p-contenido">
 
             <!-- Columna Izquierda-->  
             <div class="col-md-3 p-izquierda">
                 <div id="pImage"> 
-                    <a href="#" class="thumbnail"><img src="images/developers/yoop.jpg" alt="myImage"></a>
-                    <strong>Autor:</strong><a class="blogAutor" data-toggle="tooltip" title="Visita su perfil"> Alberto Alonzo</a>
+                    <a href="#" class="thumbnail"><img src="<?php echo $url_img ?>" alt="myImage"></a>
+                    <strong>Autor:</strong><a class="blogAutor" data-toggle="tooltip" title="Visita su perfil"> <?php echo $name_autor ?></a>
                 </div>
             </div><!-- Termina columna izquierda -->
 
@@ -44,7 +48,7 @@ text textdomain( texttexttexttexttexttexttexttexttexttexttexttexttexttext
                 <div  id="pDescription">
                     <p class="text-justify">
                     <strong>Descripción:</strong><br>
-                        <?php echo $des ?>
+                        <?php echo $resumen ?>
                     </p>
                 </div>
 
@@ -58,7 +62,7 @@ text textdomain( texttexttexttexttexttexttexttexttexttexttexttexttexttext
                 <!-- Link seguir leyendo del post-->  
                 <div id="pLeyendo">
                     <p class="text-left">
-                    <a class="btn btn-primary continuarPost">Seguir Leyendo...</a>
+                    <a class="btn btn-primary continuarPost" href="">Seguir Leyendo...</a>
                     </p>
                 </div>
 
