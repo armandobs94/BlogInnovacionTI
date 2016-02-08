@@ -1,0 +1,21 @@
+Own Code
+<!-- Menu: index.php
+	<ul class="nav nav-tabs">
+	  <li role="presentation" class="active"><a href=""><img src="img/gral/home78.png"></a></li>
+	  <li role="presentation" id="secUno"><a>Fechas Destacadas</a>
+	  <li role="presentation" id="secUno"><a>Recientes</a>
+		<li><a>Post</a></li>
+		<li><a>Comentarios</a></li>
+		</li>
+	  <li role="presentation" id="secDos"><a>Categorias</a>
+	 	<li><a>Medio Ambiente</a></li>
+	 	<li><a>Tecnología</a></li>
+	  	<li><a>Politica</a></li>
+	  	<li><a>Ciencia</a></li>
+	  	<li><a>Salud</a></li>
+	    </li>
+	  <li role="presentation" id="Acercade"><a>Como Publicar</a></li>		
+	  <li role="presentation" id="Acercade"><a>Acerca de</a></li>
+	</ul>-->
+
+

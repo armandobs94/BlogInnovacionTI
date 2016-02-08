@@ -15,6 +15,10 @@
 		<!-- Mis Archivos -->
 		<script type="text/javascript" src="js/funciones.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/estilos.css">
+		<!-- Con estos funciona el maldito menu Dx 
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>-->
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
 
 		<!-- HTML5 shim, for IE6-8 support of HTML5 elements-->
 		<!--[if lt IE 9]>
@@ -49,58 +53,86 @@
     </header>
 <!--////////////////////////////////////////////////////////////////////CONTENIDOS///////////////////////////////////////////////////////////////////////-->
 	
-    <div class="container">
-	    <div class="row p-superior">
-			<div class="col-md-12 p-titulo"><h1>Blog de Innovacion y TI</h1></div>
-			<div class="col-md-12 p-menu">
-				<ul class="nav nav-tabs">
-				  <li role="presentation" class="active"><a href=""><img src="images/home78.png"></a></li>
-				  <li role="presentation" id="secUno"><a>Noticias</a></li>
-				  <li role="presentation" id="secDos"><a>Comentarios</a></li>
-				  <li role="presentation" id="Acercade"><a>Acerca de</a></li>		
-				</ul>
-			</div>
-			<!--<div class="col-md-12 p-sesion"><b>Pedro Fernández Palominos</b> | <a href="#">SALIR</a></div>-->
-		</div>
-
-		<!-- Aqui se mostrará todo el contenido -->
-		<div class="row p-contenido" id="contentsView">
-			<!-- Columna izquierda -->
-			<div class="col-md-0 p-izquierda">
-				
-			</div>
-
-			<!-- Columna central -->
-			<div class="col-md-12 p-centro" id="colcentro">
-			<ul>
-				<li class="dropdown">
-				<a class="dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-				Entrar como autor
-				<span class="caret"></span>
-				</a>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-					<li><a href="#"><img src="images/user168.png"></a></li>
-					<li role="separator" class="divider"></li>
-					<li><a href="#" id="loginAutor">Login</a></li>
-    				<li><a href="#" id="nuevoAutor">Registro</a></li>
-					</ul>
-				</li>
-			</ul>
-			<?php
-			include_once("pages/principal.php");
-			?>
-			</div>
-
-			<!-- Columna derecha -->
-			<div class="col-md-0 p-derecha">
-				
-			</div>
-
-		</div><!--termina contenido principal  -->
-		<div class="row p-inferior">
-			<div class="col-md-12 p-content"></div>
-		</div>
+<div class="container" id="containerIn">
+    <div class="row p-superior">
+		<div class="col-md-12 p-titulo"><h1>Blog de Innovacion y TI</h1></div>
+		<div class="col-md-12 p-menu">
+			<nav class="navbar navbar-inverse">
+				<div class="container-fluid">
+  					<div class="navbar-header">
+      					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>                        
+				        </button>
+      					<a class="navbar-brand" href="">Inicio</a>
+    				</div>
+    				<div class="collapse navbar-collapse" id="myNavbar">
+				        <ul class="nav navbar-nav">
+    	    				<li class="dropdown">
+          						<a class="dropdown-toggle" data-toggle="dropdown"><img src="img/gral/man42.png"><span class="caret"></span></a>
+          						<ul class="dropdown-menu">
+            						<li><a id="newAutor">Registro</a></li>
+            						<li><a id="loginAutor">Login</a></li>
+          						</ul>
+        						</li>
+        					<li><a id="fechasDestacadas">Fechas Destacadas</a></li>
+        					<li class="dropdown">
+          						<a class="dropdown-toggle" data-toggle="dropdown">Recientes<span class="caret"></span></a>
+          						<ul class="dropdown-menu">
+            						<li><a id="recientePost">Post</a></li>
+            						<li><a id="recienteComent">Comentarios</a></li>
+          						</ul>
+        						</li>
+        					<li class="dropdown">
+          					<a class="dropdown-toggle" data-toggle="dropdown">Categorias<span class="caret"></span></a>
+				        		<ul class="dropdown-menu">
+				            		<li><a class="categoria">Medio Ambiente</a></li>
+				            		<li><a class="categoria">Tecnología</a></li>
+				            		<li><a class="categoria">Politica</a></li>
+				            		<li><a class="categoria">Ciencia</a></li>
+				            		<li><a class="categoria">Salud</a></li>
+			            		</ul>
+        						</li>
+        					<li class="dropdown">
+          					<a class="dropdown-toggle" data-toggle="dropdown">Como Publicar<span class="caret"></span></a>
+          						<ul class="dropdown-menu">
+            						<li><a id="publicarTuto">Seguimiento</a></li>
+            						<li><a id="publicarPolitica">Politicas de Privacidad</a></li>
+          						</ul>
+        						</li>
+        					<li><a id="acercaDe">Acerca de</a></li>
+      					</ul>
+    				</div>
+  				</div>
+			</nav>
+		</div><!-- Termina Menú -->
+		<!--<div class="col-md-12 p-sesion"><b>Pedro Fernández Palominos</b> | <a href="#">SALIR</a></div>-->
 	</div>
+
+	<div class="row p-contenido" id="contentIn">
+		<!-- Columna izquierda -->
+		<div class="col-md-0 p-izquierda">			
+		</div>
+
+		<!-- Columna central -->
+		<div class="col-md-12 p-centro" id="colcentro">
+
+		<?php
+		include_once("assets/Formularios/principal.php");
+		?>
+		</div>
+
+		<!-- Columna derecha -->
+		<div class="col-md-0 p-derecha">
+		</div>
+
+		</div><!-- Termina Contenido -->
+	
+	<div class="row p-inferior">
+		<div class="col-md-12 p-content"></div>
+		</div>
+</div><!-- Termina Container -->
 
 <!--////////////////////////////////////////////////////////////////////PIE///////////////////////////////////////////////////////////////////////-->		
 </div><!--estructura-->

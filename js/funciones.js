@@ -1,55 +1,167 @@
 $(document).ready(function(){
-	$("#secUno").click(function(){
 
-	});
-	$("#secDos").click(function(){
+	/* Funciones Iniciar Sesión y Agregar nuevo usuario (Autor) */
+	$("#newAutor").click(function(){
+		$(".p-contenido").load("assets/Autores/nuevoAutor.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $(".p-contenido");
 
-	});
-
-	$('#Acercade').click(function(){
-		Ruta("pages/developerInfo.html");
-	});
-
-	$('#nuevoAutor').click(function(){
-		//Ruta("pages/autorBio.php");
-		$(".container").load("pages/autorBio.php");
+			if(statusTxt == "error"){	
+				 alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
 	});
 
-
-	/* Iniciar sesion (Autor) */
 	$("#loginAutor").click(function(){
-		$(".container").load("Autores/formLogin.php");
+		$(".p-contenido").load("assets/Autores/autorLogin.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $(".p-contenido");
+
+			if(statusTxt == "error"){	
+				 alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
 	});
 
-	$('#nuevo').click(function(){
-		$("#contenidoAutor").load("pages/formulario.php");
+	/* Funciones de Menú */
+	$("#fechasDestacadas").click(function(){
+		$(".p-contenido").load("assets/Autores/fechasDestacadas.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $(".p-contenido");
+
+			if(statusTxt == "error"){	
+				 alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
 	});
 
-	$('#datos').click(function(){
-		$("#contenidoAutor").load("Autores/misdatos.php");
+	$("#recientePost").click(function(){
+		$(".p-contenido").load("assets/Autores/recientePost.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $(".p-contenido");
+
+			if(statusTxt == "error"){	
+				 alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
 	});
 
+	$("#recienteComent").click(function(){
+		$(".p-contenido").load("assets/Autores/recienteComent.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $(".p-contenido");
+
+			if(statusTxt == "error"){	
+				 alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
+	});
+
+	$(".categoria").click(function(){
+		$(this).ready(function(){
+			$(".p-contenido").load("assets/Formularios/categorias.php", function(statusTxt, statusTxt, xhr){
+			var alerta = $(".p-contenido");
+
+				if(statusTxt == "error"){	
+					alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+				}
+			});
+		});
+	});
+
+
+	$("#publicarTuto").click(function(){
+		$(".p-contenido").load("assets/Formularios/publicarTuto.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $(".p-contenido");
+
+			if(statusTxt == "error"){	
+				alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
+	});
+
+	$("#publicarPolitica").click(function(){
+		$(".p-contenido").load("assets/Formularios/publicarPolitica.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $(".p-contenido");
+
+			if(statusTxt == "error"){	
+				alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
+	});
+
+	$("#acercaDe").click(function(){
+		$(".p-contenido").load("assets/Formularios/developerInfo.html", function(statusTxt, statusTxt, xhr){
+		var alerta = $(".p-contenido");
+
+			if(statusTxt == "error"){	
+				alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
+	});
 
 	/* Mensaje - link de perfil de autor */
 	$('[data-toggle="tooltip"]').tooltip();
 
-	/* enviar al blog del autor */
+	/* Ver blog completo de autores */
 	$(".blogAutor").click(function(){
 		$(this).ready(function(){
-			$(".container").load("Autores/post.php");
+		$(".container").load("assets/Autores/autorBlog.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $(".p-contenido");
+			if(statusTxt == "error"){	
+				alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+				}
+			});
 		});
 	});
 
-	/* ver post completo del autor */
-	$(".continuarPost").click(function(){
+	/* Ver post completo de autores */
+	$(".postAutor").click(function(){
 		$(this).ready(function(){
-			Ruta("pages/autorPost.php");
+		$(".container").load("assets/Autores/autorPost.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $(".p-contenido");
+			if(statusTxt == "error"){	
+				alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+				}
+			});
 		});
 	});
 
+	/* Funciones dentro del Perfil del autor */
+
+	$("#myPost").click(function(){
+		$("#formularios").load("assets/Autores/nuevoPost.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $("#formularios");
+			if(statusTxt == "error"){	
+				alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
+	});
+
+	$("#myAdmon").click(function(){
+		$("#formularios").load("assets/Autores/formuu.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $("#formularios");
+			if(statusTxt == "error"){	
+				alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
+	});
+
+	$("#misReportes").click(function(){
+		$("#formularios").load("assets/Formularios/x.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $("#formularios");
+			if(statusTxt == "error"){	
+				alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
+	});
+
+	$("#misDatos").click(function(){
+		$("#formularios").load("assets/Autores/autorMisdatos.php", function(statusTxt, statusTxt, xhr){
+		var alerta = $("#formularios");
+			if(statusTxt == "error"){	
+				alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
+			}
+		});
+	});	
 });
 
-/* Funcion añadir los archivos en un solo DIV*/
+/* Funcion añadir los archivos en un solo DIV
 function Ruta(archivo){
 var peticion;
 	if (window.XMLHttpRequest){
@@ -60,15 +172,15 @@ var peticion;
 	}
 peticion.onreadystatechange = function(){
 	if (peticion.readyState == 4 && peticion.status == 200){
-		document.getElementById("colcentro").innerHTML = peticion.responseText;		
+		document.getElementById("containerIn").innerHTML = peticion.responseText;		
 		}
 	else{
-		document.getElementById("colcentro").innerHTML = "No sepuede mostrar";
+		document.getElementById("containerIn").innerHTML = "<p class='text-center'><img src='img/gral/errorpage.png'></p>";
 	}
 }
 peticion.open("POST",archivo,true);
 peticion.send();
-}
+}*/
 
 /* Contador de caractereds */
 function cuenta(){
@@ -85,6 +197,45 @@ function cuenta(){
 		$("#error").removeClass("has-error");
 	}
 }
+
+$(".Revi").on({
+	keyup: function(){
+	//Limitaciones de contenido 
+	var maxT = 10;
+	var maxR = 15;
+	var maxC = 2000;
+	var valor = $(this).attr("id");
+
+		if (valor == "npTitulo") {
+			var resta = maxT - $(this).val().length;
+			if (resta <= 0) {	
+				$("#error1").addClass("has-error");
+			}
+			else {
+				$("#error1").removeClass("has-error");	
+			}
+		}
+
+		if (valor == "npResumen") {
+			var resta = maxR - $(this).val().length;
+			if (resta <= 0) {
+				$("#error2").addClass("has-error");
+			}
+			else {
+				$("#error2").removeClass("has-error");	
+			}
+		}
+		if (valor == "npContenido") {
+			var resta = maxC - $(this).val().length;
+			if (resta <= 0) {
+				$("#error3").addClass("has-error");
+			}
+			else {
+				$("#error3").removeClassd("has-error");
+			}
+		}
+	}
+});
 
 /* Cargar imagen del autor */
 $(document).on('change', '.btn-file :file', function() {
