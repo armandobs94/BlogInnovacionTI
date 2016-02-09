@@ -112,14 +112,14 @@ $(document).ready(function(){
 
 	/* Ver post completo de autores */
 	$(".postAutor").click(function(){
-		$(this).ready(function(){
-		$(".container").load("assets/Autores/autorPost.php", function(statusTxt, statusTxt, xhr){
+		var id = $(this).attr('id');
+		$(".container").load("assets/Autores/autorPost.php?id="+id, function(statusTxt, statusTxt, xhr){
 		var alerta = $(".p-contenido");
 			if(statusTxt == "error"){	
 				alerta.html("<p class='text-center'><img src='img/gral/errorpage.png'></p>");
 				}
 			});
-		});
+	
 	});
 
 	/* Funciones dentro del Perfil del autor */
@@ -160,27 +160,6 @@ $(document).ready(function(){
 		});
 	});	
 });
-
-/* Funcion añadir los archivos en un solo DIV
-function Ruta(archivo){
-var peticion;
-	if (window.XMLHttpRequest){
-	peticion = new XMLHttpRequest();
-	}
-	else{
-	peticion = new ActiveXObject("Microsoft.XLMHTTP");
-	}
-peticion.onreadystatechange = function(){
-	if (peticion.readyState == 4 && peticion.status == 200){
-		document.getElementById("containerIn").innerHTML = peticion.responseText;		
-		}
-	else{
-		document.getElementById("containerIn").innerHTML = "<p class='text-center'><img src='img/gral/errorpage.png'></p>";
-	}
-}
-peticion.open("POST",archivo,true);
-peticion.send();
-}*/
 
 /* Contador de caractereds */
 function cuenta(){

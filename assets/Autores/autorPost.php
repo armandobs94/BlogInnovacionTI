@@ -1,127 +1,43 @@
 <?php
-    date_default_timezone_set("America/Mexico_City");
-    $hora = date("H:i:s");
-    $fecha = date("Y-m-d");
-
+    $id = $_GET['id'];
+    require_once('../../lib/php/conexion.php');
+    require_once('../../lib/php/configuracion.php');
+    echo "id_post: ".$id;
+    $sql = "SELECT 
+    A.id_post,A.titulo, A.resumen as resumen_p,A.contenido, A.fecha,
+    B.foto,B.id_usuario, B.resumen,
+    C.nombre_completo, C.correo 
+FROM 
+    post as A, autores as B, usuarios as C 
+WHERE 
+    A.id_post='$id' AND A.estado=4 AND A.id_autor = B.id_autor AND B.id_autor = C.id_usuario";
+    $data = new HelperMySql(SERVER,USER,PASSW,BD);
+    $co = $data -> query($sql);
 ?>
-
-<!DOCTYPE html>
-<html>
-<script type="text/javascript" src="js/funciones.js"></script>
-<body>
-<div class="row p-superior">
-        <div class="col-md-12 p-titulo"><h1>Blog de Innovacion y TI</h1></div>
-        <div class="col-md-12 p-menu">
-            <nav class="navbar navbar-inverse">
-                <div class="container-fluid">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                        </button>
-                        <a class="navbar-brand" href="">Inicio</a>
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav">
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown"><img src="img/gral/man42.png"><span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a id="newAutor">Registro</a></li>
-                                    <li><a id="loginAutor">Login</a></li>
-                                </ul>
-                                </li>
-                            <li><a id="fechasDestacadas">Fechas Destacadas</a></li>
-                            <li class="dropdown">
-                                <a class="dropdown-toggle" data-toggle="dropdown">Recientes<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a id="recientePost">Post</a></li>
-                                    <li><a id="recienteComent">Comentarios</a></li>
-                                </ul>
-                                </li>
-                            <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown">Categorias<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="categoria">Medio Ambiente</a></li>
-                                    <li><a class="categoria">Tecnología</a></li>
-                                    <li><a class="categoria">Politica</a></li>
-                                    <li><a class="categoria">Ciencia</a></li>
-                                    <li><a class="categoria">Salud</a></li>
-                                </ul>
-                                </li>
-                            <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown">Como Publicar<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a id="publicarTuto">Seguimiento</a></li>
-                                    <li><a id="publicarPolitica">Politicas de Privacidad</a></li>
-                                </ul>
-                                </li>
-                            <li><a id="acercaDe">Acerca de</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div><!-- Termina Menú -->
-        <!--<div class="col-md-12 p-sesion"><b>Pedro Fernández Palominos</b> | <a href="#">SALIR</a></div>-->
-    </div>
 	<div id="contenedor">
+    <?php  foreach($co as $row):?>
     <!-- Contenedor de solo un post -->                
     <div class="row p-contenido">
         <!-- Columna Izquierda-->  
         <div class="col-md-3 p-izquierda">
             <div id="datosAutor">
                 <div id="pImage" class="text-center"> 
-                    <img src="img/dev/yoop.jpg" class="img-circle" alt="myImage" style="width:150px; height:170px;"><hr>
-                    <p class="text-primary" id="nombreAutor"><a class="blogAutor" data-toggle="tooltip" title="Visita su perfil"> Alberto Alonzo</a></p>
+                    <img src="<?php echo $row['foto'] ?>" class="img-circle" alt="myImage" style="width:150px; height:170px;"><hr>
+                    <p class="text-primary" id="nombreAutor"><a class="blogAutor" data-toggle="tooltip" title="Visita su perfil"> <?php echo $row['nombre_completo'] ?></a></p>
                 </div>
                 <p class="text-justify" id="aboutAutor">
-                    Esta es una pequeña descripcion acerca de mi
-                    Esta es una pequeña descripcion acerca de mi
-                    Esta es una pequeña descripcion acerca de mi
-                    Esta es una pequeña descripcion acerca de mi
-                    Esta es una pequeña descripcion acerca de mi
+                    <?php echo $row['resumen'] ?>
                 </p>
-                <p class="text-left" data-toggle="tooltip" title="Da click para ver mis datos">Contáctame!</p>
+                <p class="text-left" data-toggle="tooltip" title="Da click para ver mis datos">Contáctame: <?php echo $row['correo'] ?></p>
             </div>
         </div><!-- Termina columna izquierda -->
 
         <!-- Columna Central -->
         <div class="col-md-7 p-centro">
             <div id="datosPost">
-                <h3 id="tituloPost">Titulo del post</h3>
+                <h3 id="tituloPost"><?php echo $row['titulo'] ?></h3>
                 <p class="text-justify" id="contenidoPost">
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
-                    Esto es el contenido del post del autor.
+                    <?php echo $row['contenido'] ?>
                 </p>
                 <p class="text-left" id="enlacePost"><a href="#">Enlace de video</a></p>
                 <hr>
@@ -236,7 +152,5 @@
 
     </div><!-- Fin contenido -->
     <hr>
+    <?php endforeach; ?>
 </div><!-- Fin contenedor-->
-
-</body>
-</html>
