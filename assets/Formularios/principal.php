@@ -1,12 +1,11 @@
 <?php
     require_once('lib/php/conexion.php');
-    require_once('lib/php/configuracion.php');
     $sql = "SELECT A.id_post,A.titulo, A.resumen, A.fecha,B.foto,B.id_usuario,C.nombre_completo FROM post as A, autores as B, usuarios as C WHERE A.estado = 4 AND A.id_autor = B.id_autor AND B.id_autor = C.id_usuario";
     $data = new HelperMySql(SERVER,USER,PASSW,BD);
     $co = $data -> query($sql); 
 ?>
 <div id="comentarios">
-<?php  foreach($co as $row):?>
+    <?php foreach ($co as $row): ?>
     <div id="contenedor"><!-- Contenedor de solo un post -->                
         <div class="row p-contenido">
             <!-- Columna Izquierda-->  

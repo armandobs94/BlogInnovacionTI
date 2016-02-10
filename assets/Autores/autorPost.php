@@ -1,16 +1,11 @@
 <?php
     $id = $_GET['id'];
     require_once('../../lib/php/conexion.php');
-    require_once('../../lib/php/configuracion.php');
     echo "id_post: ".$id;
-    $sql = "SELECT 
-    A.id_post,A.titulo, A.resumen as resumen_p,A.contenido, A.fecha,
-    B.foto,B.id_usuario, B.resumen,
-    C.nombre_completo, C.correo 
-FROM 
-    post as A, autores as B, usuarios as C 
-WHERE 
-    A.id_post='$id' AND A.estado=4 AND A.id_autor = B.id_autor AND B.id_autor = C.id_usuario";
+    $sql = "SELECT A.id_post,A.titulo, A.resumen as resumen_p,A.contenido, A.fecha,
+    B.foto,B.id_usuario, B.resumen, C.nombre_completo, C.correo FROM post as A, 
+    autores as B, usuarios as C WHERE A.id_post='$id' AND A.estado=4 AND 
+    A.id_autor = B.id_autor AND B.id_autor = C.id_usuario";
     $data = new HelperMySql(SERVER,USER,PASSW,BD);
     $co = $data -> query($sql);
 ?>
@@ -48,8 +43,21 @@ WHERE
                     <span class="label label-success"><a href="#">Energia</a></span>
                     </p>
                 </div>
+<?php endforeach; ?>
+<?php  
+    $s = "SELECT COUNT(*) AS cuenta FROM comentarios WHERE id_post='$id' AND estado=1";
+    $total = $data->query($s);
+    foreach($total as $row):
+?>
+<div id="totalComentarios">
+    <label>Comentarios en este post:<?php echo " ".$row['cuenta'] ?></label>
+</div>
+<?php  
+    endforeach;
+?>
         <div id="comentarios">
                 <!-- Formulario para comentarios -->
+               
                 <div class="well">
                     <h4>Escribe un comentario:</h4>
                     <form role="form">
@@ -63,6 +71,11 @@ WHERE
                 <hr>
 
                 <!-- Comentarios de usuarios -->
+<?php  
+    $query = "SELECT * FROM comentarios WHERE id_post='$id' AND estado=1";
+    $coment=$data->query($query);
+    foreach($coment as $row):
+?>                 
                      <div class="media">
                         <a class="pull-left" href="#">
                             <img class="media-object" src="http://placehold.it/64x64" alt="">
@@ -81,52 +94,24 @@ WHERE
                                 <li class="dropdown">
                                   <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret red"></b></a>
                                   <ul class="dropdown-menu">
-                                    <li><a href="#">Reportar</a></li>
+                                    <li><a href="#" id="<?php echo $row['id_comentario'] ?>">Reportar</a></li>
                                   </ul>
                                 </li>
                               </ul>
                               </div>
 
                             <h4 class="media-heading">
-                                <small><?php echo $fecha." a las ".$hora ?></small>
+                                <small><?php echo $row['horario']?></small>
                             </h4>
                             <p class="text-justify">
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. 
-                                Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-                                 Donec lacinia congue felis in faucibus.
+                                <?php echo $row['comentario'] ?>
                             </p>
                         </div>
                     </div>
                 <!-- Comentarios de usuarios -->
-                 <div class="media">
-                    <a class="pull-left" href="#">
-                        <img class="media-object" src="http://placehold.it/64x64" alt="">
-                    </a>
-                    <div class="media-body">
-                        <h4 class="media-heading">
-                            <small><?php echo $fecha." a las ".$hora ?></small>
-                        </h4>
-                        <p class="text-justify">
-                            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. 
-                            Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-                             Donec lacinia congue felis in faucibus.
-                        </p>
-                    </div>
-                </div>
+<?php endforeach; ?>
                     <!-- Nested Comment -->
-                        <div class="media">
-                            <a class="pull-left" href="#">
-                                <img class="media-object" src="http://placehold.it/64x64" alt="">
-                            </a>
-                            <div class="media-body">
-                                <h4 class="media-heading">Nested Start Bootstrap
-                                    <small>August 25, 2014 at 9:30 PM</small>
-                                </h4>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-
-            </div>
+                </div>
         </div><!-- Termina columna central -->  
     </div>
         <!-- Columna Derecha -->             
@@ -152,5 +137,4 @@ WHERE
 
     </div><!-- Fin contenido -->
     <hr>
-    <?php endforeach; ?>
 </div><!-- Fin contenedor-->
