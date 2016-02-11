@@ -1,0 +1,6 @@
+ul > li {color: #000;}
+ul > li > a:hover {cursor: pointer; text-decoration: none;}
+
+#menuCat, #menuLog, #menuHelp {background-color: #000;}
+.dropdown-menu li > a {text-align: center;}
+.dropdown-menu ul > li > a { background-color: #000; opacity: .6;}
