@@ -1,5 +1,5 @@
 <?php  
-	include_once('php/conexion.php');
+	include_once('../php/conexion.php');
 	$id=$_GET['id'];
 	$id_p = mysql_escape_string($id);
 	$sql = "SELECT 
@@ -14,8 +14,8 @@ WHERE
     $co = $data -> query($sql);
 
     $salidaImg = "../";
-
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -28,8 +28,8 @@ WHERE
 	<!-- styles -->
 	<link href="http://www.ucol.mx/cms/css/bootstrap3.css" rel="stylesheet">
 	<link href="http://www.ucol.mx/cms/headerfooterapp.css" rel="stylesheet">
-	<link rel="stylesheet" type="text/css" href="css/menu-style.css">
-	<script src="http://www.ucol.mx/cms/js/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../css/menu-style.css">
+	<script src="http://www.ucol.mx/cms/js/jquery.min.js"></script> 	
 </head>
 
 <body id="homepage">
@@ -62,103 +62,88 @@ WHERE
 	
 <div class="container">
     <div class="row p-superior">
-	<div class="col-md-12 p-titulo"><h1>Blog de Innovación y TI.</h1></div>
+	<div class="col-md-12 p-titulo"><h1>Blog Personal</h1></div>
 		<div class="col-md-12 p-menu">
 			<ul>
-				<li class="active"><a href="./index.php">Inicio</a></li>
+				<li class="active"><a href="#">Inicio</a></li>
 				<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuLog">
-					Usuario<span class="caret"></span></a>
-					<ul class="dropdown-menu" id="menuLog">
-						<li><a>Registro</a></li>
-						<li><a>Log-in</a></li>
+				<a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuUser">
+					<img src="../assets/icons/exit2_7.png"><span class="caret"></span></a>
+					<ul class="dropdown-menu" id="menuUser">
+						<li><a  href="../index.php">Salir</a></li>
 					</ul>
 				</li>
-				<li><a href="#">Fechas Destacadas</a></li>
 				<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuCat">
-					Categorias<span class="caret"></span></a>
-					<ul class="dropdown-menu" id="menuCat">
-						
-						<li><a class="categoria">Medio Ambiente</a></li>
-				        <li><a class="categoria">Tecnología</a></li>
-				        <li><a class="categoria">Politica</a></li>
-				        <li><a class="categoria">Ciencia</a></li>
-				        <li><a class="categoria">Salud</a></li>
-				        
+					Mis Post<span class="caret"></span></a>
+					<ul class="dropdown-menu" id="menuCat">						
+						<li><a class="categoria" href="<?php echo "nuevoPost.php" ?>">Nuevo Post</a></li>
+				        <li><a class="categoria" href="#">Administración</a></li>
 					</ul>
 				</li>
-				<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuHelp">
-					Ayuda<span class="caret"></span></a>
-					<ul class="dropdown-menu" id="menuHelp">
-						<li><a class="ayuda">Como Publicar</a></li>
-						<li><a class="ayuda">Politicas</a></li>
-					</ul>
-				</li>
-				<li><a href="#">Acerca de</a></li>
+				<li><a href="#">Reportes</a></li>
+				<li><a href="<?php echo "misDatos.php" ?>">Mis Datos</a></li>
 			</ul>
 		</div><!-- Termina menú -->
 		<!--<div class="col-md-12 p-sesion"><b>Pedro Fernández Palominos</b> | <a href="#">SALIR</a></div>-->
 	</div><!-- Termina Row p-superior -->
 
-<?php  foreach($co as $row):?>
-	<div class="row p-contenido">
-		<div class="col-md-2 p-izquierda">
-			<div id="datosAutor">
-				<!-- Imagen de perfil del Autor -->
+ <!-- Contenedor de solo un post -->
+ <?php  foreach($co as $row):?>                
+    <div class="row p-contenido" id="formularios">
+        <!-- Columna Izquierda-->  
+        <div class="col-md-3 p-izquierda">
+            <div id="datosAutor">
+            	<!-- Imagen de perfil del Autor  -->
                 <div id="pImage" class="text-center"> 
-                    <img src="<?php echo $row['foto'] ?>" class="img-circle" alt="myImage" style="width:150px; height:170px;"><hr>
-                    <p class="text-primary" id="nombreAutor"><a class="blogAutor" data-toggle="tooltip" title="Visita su perfil" href="<?php echo "autor/miBlog.php?id=".$row["id_post"] ?>"> 
+                    <img src="<?php echo $salidaImg.$row['foto'] ?>" class="img-circle" alt="myImage" style="width:150px; height:170px;"><hr>
+                    <p class="text-primary" id="nombreAutor"><a href="#">
                     <?php echo $row['nombre_completo'] ?></a></p>
                 </div>
                 <!-- Resumen del Autor -->
-                <p class="text-center" id="aboutAutor">
-                   	<?php echo $row['resumen'] ?>
+                <p class="text-justify" id="aboutAutor">
+                    <?php echo $row['resumen'] ?>
                 </p>
                 <!-- Datos de contacto del Autor -->
                 <p class="text-left" data-toggle="tooltip" title="Da click para ver mis datos">
-                	Contáctame: <?php echo $row['correo'] ?>
-                </p>
+                Contáctame: <?php echo $row['correo'] ?></p>
             </div>
-		</div><!-- Termina Columna Izquierda -->
-		
-<div class="col-md-8 p-centro">
+        </div><!-- Termina columna izquierda -->
+
+ 		<div class="col-md-7 p-centro">
 	<div id="contenedor_t">
 	<!-- CONTENIDO AQUI -->
 	
-	    <!-- Contenedor de un solo post -->                
+	    <!-- Contenedor de solo un post -->                
     	<div class="row p-contenido">
 
-		    <div>
-        <div id="datosPost">
-	        <!-- Titulo del post -->
-        	<h3 id="tituloPost"><?php echo $row['titulo'] ?></h3>
-            <p class="text-justify" id="contenidoPost">
-                <?php echo $row['contenido'] ?>
-            </p>         
-        	<!-- Enlace de video del post -->       
-            <p class="text-left" id="enlacePost"><a href="#">Enlace de video</a></p>
-            <hr>
-            	<div id="etiquetasPost">
-                    <p class="text-left"><span><img src="assets/icons/label49.png"> Tags: </span>
+    		<div>
+            <div id="datosPost">
+                <h3 id="tituloPost"><?php echo $row['titulo'] ?></h3>
+                <p class="text-justify" id="contenidoPost">
+                    <?php echo $row['contenido'] ?>
+                </p>                
+                <p class="text-left" id="enlacePost"><a href="#">Enlace de video</a></p>
+                <hr>
+                <div id="etiquetasPost">
+                    <p class="text-left"><span><img src="<?php echo $salidaImg."assets/icons/label49.png" ?>"> Tags: </span>
                     <span class="label label-primary"><a href="#">Medio Ambiente</a></span>
                     <span class="label label-warning"><a href="#">Agua</a></span>
                     <span class="label label-success"><a href="#">Energia</a></span>
                     </p>
                 </div>
-        <!-- TERMINA CONTENIDO POST -->        
 
+        <!-- TERMINA CONTENIDO POST -->        
         <div id="comentarios">
-            <!-- Formulario para comentarios -->
-            <div class="well">
-                <h4>Escribe un comentario:</h4>
-                <form role="form">
-                    <div class="form-group">
-                    <textarea class="form-control noresize" rows="3"></textarea>
-                    </div>
-                    <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
-                    <label class="btn btn-primary">Enviar</label>
+                <!-- Formulario para comentarios -->
+                <div class="well">
+                    <h4>Escribe un comentario:</h4>
+                    <form role="form">
+                        <div class="form-group">
+                            <textarea class="form-control noresize" rows="3"></textarea>
+                        </div>
+                        <!-- <button type="submit" class="btn btn-primary">Enviar</button> -->
+                        <label class="btn btn-primary">Enviar</label>
                     </form>
                 </div>
                 <hr>
@@ -169,66 +154,70 @@ WHERE
 					foreach ($coment as $row):
 				?>
 
-        <!-- Comentarios de usuarios -->
-        <div class="media">
-        	<a class="pull-left" href="#">
-            <img class="media-object" src="http://placehold.it/64x64" alt=""></a>
+                <!-- Comentarios de usuarios -->
+                <div class="media">
+                    <a class="pull-left" href="#">
+                    <img class="media-object" src="http://placehold.it/64x64" alt=""></a>
                         
-            <div class="media-body">
-            <!-- ESTO ES PARA REPORTAR EL COMENTARIO-->
-                <div class="reportarC col-md-offset-3">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret red"></b></a>
-                 	  	    <ul class="dropdown-menu">
-                          	   <li><a href="#">Reportar</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            <!-- Fecha del post -->
-            <h4 class="media-heading"><small><?php echo $row['horario'] ?></small></h4>
-            <p class="text-justify">
-                <?php echo $row['comentario'] ?>
-                </p>
-            </div><!-- Contenido de Comentarios -->
-        </div><!-- Termina div contenedor de comentarios -->
-		<?php endforeach; ?>                    
-    		</div><!-- Termina div COMENTARIOS -->
-    	</div><!-- Termina div datosPost -->  
+                    <div class="media-body">
+                    <!-- ESTO ES PARA REPORTAR EL COMENTARIO-->
+                        <div class="reportarC col-md-offset-3">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b class="caret red"></b></a>
+                        	    <ul class="dropdown-menu">
+                            	   <li><a href="#">Reportar</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        </div>
+
+                        <h4 class="media-heading"><small><?php echo $row['horario'] ?></small></h4>
+                        <p class="text-justify">
+                            <?php echo $row['comentario'] ?>
+                        </p>
+                    </div><!-- Contenido de Comentarios -->
+                </div><!-- Termina div contenedor de comentarios -->
+			<?php endforeach; ?>                    
+            </div><!-- Termina div COMENTARIOS -->
+        </div><!-- Termina div datosPost -->  
     </div>
 </div><!-- Fin contenido -->
 <hr>
 <?php endforeach; ?>					
 
 
-	</div><!-- Termina div Contenido_t -->
+	</div>
 </div><!-- Termina div P-centro -->
 
 
-<div class="col-md-2 p-derecha">
-<!-- Blog Categories Well -->
-    <div class="well">
-    <h4>Categorias</h4>
-    
-        <div class="row">
-    	    <div class="col-lg-6">
-            <ul class="list-unstyled">
-                <li><a href="#">Tecnologías</a></li>
-                <li><a href="#">Politica</a></li>
-                <li><a href="#">Salud</a></li>
-                <li><a href="#">Cientifico</a></li>
-            </ul>
+
+        <!-- Columna Derecha -->             
+        <div class="col-md-2 p-derecha">  
+            <div id="categoriasPost">
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Categorias</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Tecnologías</a></li>
+                                <li><a href="#">Politica</a></li>
+                                <li><a href="#">Salud</a></li>
+                                <li><a href="#">Cientifico</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-</div><!-- Termina row p-contenido -->
+        </div><!-- Termina columna derecha -->  
+    </div><!-- Fin contenido Row P-contenido -->
 	
 	<div class="row p-inferior">
 		<div class="col-md-12 p-content"></div>
+		</div>
 	</div>
-</div><!-- Termina div Container -->
 
 <!--////////////////////////////////////////////////////////////////////PIE///////////////////////////////////////////////////////////////////////-->		
 </div><!--estructura-->

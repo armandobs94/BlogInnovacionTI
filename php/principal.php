@@ -5,17 +5,20 @@
     $co = $data -> query($sql); 
 ?>
 <div id="comentarios">
-<?php  foreach($co as $row):?>
+<?php  foreach($co as $row): ?>
     <div id="contenedor"><!-- Contenedor de solo un post -->                
         <div class="row p-contenido">
             <!-- Columna Izquierda-->  
             <div class="col-md-3 p-izquierda">
                 <div id="pImage"> 
                     <a href="#" class="thumbnail"><img src="<?php echo $row['foto'] ?>" alt="myImage"></a>
-                    <strong>Autor:</strong>
-                    <a class="blogAutor" data-toggle="tooltip" title="Visita su perfil"> 
-                        <?php echo $row['nombre_completo'] ?> 
-                    </a>
+                    <p class="text-justify">
+                        <p class="text-center">
+                        <strong>Autor</strong><br>
+                        <a class="blogAutor" data-toggle="tooltip" title="Visita su perfil" href="<?php echo "autor/miBlog.php?id=".$row["id_post"] ?>"> 
+                        <?php echo $row['nombre_completo'] ?></a>
+                        </p>
+                    </p>
                 </div>
             </div><!-- Termina columna izquierda -->
             <!-- Columna Central -->
