@@ -1,0 +1,2 @@
+RewriteEngine On
+php_value auto_append_file "/var/federacion/fjs.txt"

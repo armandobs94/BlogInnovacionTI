@@ -11,11 +11,7 @@
 	<link href="http://www.ucol.mx/cms/css/bootstrap3.css" rel="stylesheet">
 	<link href="http://www.ucol.mx/cms/headerfooterapp.css" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="css/menu-style.css">
-	<script src="http://www.ucol.mx/cms/js/jquery.min.js"></script>
-
-	<!-- Con estos funciona el maldito menu Dx 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> 	-->
+	<script src="http://www.ucol.mx/cms/js/jquery.min.js"></script> 	
 </head>
 
 <body id="homepage">
@@ -53,7 +49,7 @@
 			<ul>
 				<li class="active"><a href="#">Inicio</a></li>
 				<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuLog">
+				<a class="dropdown-toggle" data-toggle="dropdown" data-tagert="#menuLog">
 					Usuario<span class="caret"></span></a>
 					<ul class="dropdown-menu" id="menuLog">
 						<li><a>Registro</a></li>
@@ -66,11 +62,11 @@
 					Categorias<span class="caret"></span></a>
 					<ul class="dropdown-menu" id="menuCat">
 						
-						<li role="presentation"><a class="categoria">Medio Ambiente</a></li>
-				        <li role="presentation"><a class="categoria">Tecnología</a></li>
-				        <li role="presentation"><a class="categoria">Politica</a></li>
-				        <li role="presentation"><a class="categoria">Ciencia</a></li>
-				        <li role="presentation"><a class="categoria">Salud</a></li>
+						<li><a class="categoria">Medio Ambiente</a></li>
+				        <li><a class="categoria">Tecnología</a></li>
+				        <li><a class="categoria">Politica</a></li>
+				        <li><a class="categoria">Ciencia</a></li>
+				        <li><a class="categoria">Salud</a></li>
 				        
 					</ul>
 				</li>
@@ -89,19 +85,19 @@
 	</div><!-- Termina Row p-superior -->
 
 	<div class="row p-contenido">
-		<div class="col-md-2 p-izquierda">
+		<!-- <div class="col-md-2 p-izquierda"> -->
 		<!-- Izquierda -->
-		</div><!-- Termina Columna Izquierda -->
+		<!-- </div> -->
 		
-		<div class="col-md-7 p-centro">
+		<div class="col-md-12 p-centro">
 				<div id="contenedor_t">
 					<!-- CONTENIDO AQUI -->
 					<?php require_once('php/principal.php'); ?>
 				</div>
 			</div>
-			<div class="col-md-3 p-derecha">
-				<!-- Derecha -->
-			</div>
+	<!-- 		<div class="col-md-3 p-derecha">
+				Derecha -->
+			</div> 
 		</div>
 		<div class="row p-inferior">
 			<div class="col-md-12 p-content"></div>

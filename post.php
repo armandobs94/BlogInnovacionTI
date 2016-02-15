@@ -117,8 +117,8 @@ WHERE
                    	<?php echo $row['resumen'] ?>
                 </p>
                 <!-- Datos de contacto del Autor -->
-                <p class="text-left" data-toggle="tooltip" title="Da click para ver mis datos">
-                	Contáctame: <?php echo $row['correo'] ?>
+                <p class="text-center" data-toggle="tooltip" title="Da click para ver mis datos">
+                	Contáctame: <label> <?php echo $row['correo'] ?> </label>
                 </p>
             </div>
 		</div><!-- Termina Columna Izquierda -->
@@ -194,7 +194,7 @@ WHERE
             </div><!-- Contenido de Comentarios -->
         </div><!-- Termina div contenedor de comentarios -->
 		<?php endforeach; ?>                    
-    		</div><!-- Termina div COMENTARIOS -->
+    </div><!-- Termina div COMENTARIOS -->
     	</div><!-- Termina div datosPost -->  
     </div>
 </div><!-- Fin contenido -->
