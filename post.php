@@ -61,7 +61,11 @@ WHERE
                 </p>
                 <!-- Datos de contacto del Autor -->
                 <p class="text-center" data-toggle="tooltip" title="Da click para ver mis datos">
+<<<<<<< HEAD
                     ContÃ¡ctame: <label> <?php echo $post['correo'] ?> </label>
+=======
+                	Contáctame: <label> <?php echo $row['correo'] ?> </label>
+>>>>>>> origin/master
                 </p>
             </div>
         </div><!-- Termina Columna Izquierda -->
@@ -139,12 +143,18 @@ WHERE
                 </p>
             </div><!-- Contenido de Comentarios -->
         </div><!-- Termina div contenedor de comentarios -->
+<<<<<<< HEAD
         <?php 
                 }while($mostrar = $data -> fetch_assoc($coment));
             }
         ?>                    
     </div><!-- Termina div COMENTARIOS -->
         </div><!-- Termina div datosPost -->  
+=======
+		<?php endforeach; ?>                    
+    </div><!-- Termina div COMENTARIOS -->
+    	</div><!-- Termina div datosPost -->  
+>>>>>>> origin/master
     </div>
 </div><!-- Fin contenido -->
 <hr>

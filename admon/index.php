@@ -19,6 +19,7 @@
 
 <link rel="stylesheet" type="text/css" href="../css/menu-style.css">
 
+<<<<<<< HEAD
 
 <style type="text/css">
   
@@ -30,6 +31,8 @@
 
 
 
+=======
+>>>>>>> origin/master
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -76,6 +79,7 @@
         $num = $row['total'];
       endforeach;     
     if($num!=1){
+<<<<<<< HEAD
 ?>
 <div id="sesion">
       <label>Bienvenido.</label>&nbsp; &nbsp;<label><?php echo $nombre ?></label>
@@ -245,6 +249,168 @@ jesu_12171993@hotmail.com
     <!-- cierra footer-->
        <!-- javascript -->
 
+=======
+
+
+      echo "Bienvenido: ".$nombre."<br>";
+      echo "<label>"."No tiene permisos para entrar a este apartado."."</label>";
+      echo '<br><a href="privada/logout.php">Cerrar Sessión</a>';
+    }else{
+?>
+      <label>Bienvenido</label><label><?php echo " ".$nombre ?></label>
+
+
+
+      <br><a href="privada/logout.php">Cerrar Sessión</a>
+<!--////////////////////////////////////////////////////////////////////CONTENIDOS///////////////////////////////////////////////////////////////////////-->
+  
+<div class="container">
+      <div class="row p-superior">
+      <div class="col-md-12 p-titulo"><h1>Administrador</h1></div>
+      <div class="col-md-12 p-menu">
+        <ul>
+         <li><a href="admin.php  "> Inicio</a> </li> 
+          <li><a href="nuevousuario.php"  >Nuevo usuario</a></li>
+      
+        
+        </ul>
+      </div>
+      
+    </div>
+    <div class="row p-contenido">
+      <div class="col-md-2 p-izquierda">
+  
+      </div>
+      <div class="col-md-7 p-centro">
+
+
+
+
+<table class="table table-bordered">
+<tr>
+<br>
+<br>
+<th>Nombre</th>  <th>Correo</th>  <th>Tipo de usuario</th>  </tr>
+
+<tr>
+ 
+<td>
+
+Jesus Martin
+
+</td>
+
+<td>
+jesu_12171993@hotmail.com
+</td>
+
+<td>Moderador</td>
+
+
+
+ <td>
+  
+<button  class="btn btn-default" >Editar</button>
+
+</td>
+<td>
+
+
+<!-- Modificar -->
+<button  class="btn btn-default" >Eliminar</button>
+
+
+</td>
+</tr>
+
+
+  </div>  
+   
+
+
+
+
+
+ </table>
+
+
+
+
+
+
+</div>
+
+
+
+      </div>
+      <div class="col-md-3 p-derecha">
+  
+      </div>
+    </div>
+    <div class="row p-inferior">
+      <div class="col-md-12 p-content"></div>
+    </div>
+  </div>
+
+<?php       
+    }       
+    }else{
+?>
+
+<div id="sesion">
+
+      <br>No hay sesión iniciada<br><a  href='./privada/' >Iniciar sesi&oacute;n</a>
+
+</div>
+      <?php
+    } 
+?>
+</header>
+<!--////////////////////////////////////////////////////////////////////PIE///////////////////////////////////////////////////////////////////////-->   
+</div><!--estructura-->
+    <footer id="p-footer"><!-- footer -->
+      <div class="inner">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 mapa">
+              <div class="address pull-right">
+                <ul>
+                  <li><i class="icon-address"></i><strong>Direcci&oacute;n:</strong> Av. Universidad No. 333, Las V&iacute;boras; CP 28040 Colima, Colima, M&eacute;xico</li>
+                   <!--<li><i class="icon-email"></i><a href="/portal-web/Directorio.htm">Directorio</a></li>
+                  <li><i class="icon-map"></i><a href="/conocenos/mapa.htm">Mapa del sitio</a></li>-->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="p-copyright">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="col-md-6 col-xs-6 izquierda">
+                <a href='http://www.sep.gob.mx/' target="_blank"><img src="http://www.ucol.mx/cms/img/LogoSEP1.png"></a>
+                <a href='http://www.anuies.mx/' target="_blank"><img src="http://www.ucol.mx/cms/img/anuies.png"></a>
+                <a href='http://www.unesco.org/new/es/' target="_blank"><img src="http://www.ucol.mx/cms/img/unesco.png"></a>
+                <a href='http://www.cumex.org.mx/' target="_blank"><img src="http://www.ucol.mx/cms/img/consorcio.png"></a>
+              </div>
+              <div class="col-md-6 col-xs-6 derecha">
+                <a href='http://www.federaciondeestudiantescolimenses.com/' target="_blank"><img src="http://www.ucol.mx/cms/img/LogoFEC.png"  width="81px" height="30px" ></a>         
+                &nbsp;<a href='#' target="_blank"><img src="http://www.ucol.mx/cms/img/SUTUC.png"></a>  
+                &nbsp;<a href='http://portal.ucol.mx/feuc/'  target="_blank"><img src="http://www.ucol.mx/cms/img/LogoFEUC.png"></a>
+                <!-- &nbsp;<a href='http://www.fundacionucol.org/' target="_blank"><img src="/cms/img/fundacionUcol.png"></a> -->
+              </div>
+            </div>
+            <div class="col-md-12 derechos">&copy; Derechos Reservados 2013-2016 Universidad de Colima</div>
+          </div>
+        </div>
+      </div>   
+    </footer>
+    <!--footer-->
+    <!-- cierra footer-->
+       <!-- javascript -->
+
+>>>>>>> origin/master
   <!--<script src="/js/jquery-1.7.2.min.js"></script>
   
   <script src="/js/superfish.js"></script>
@@ -274,6 +440,7 @@ jesu_12171993@hotmail.com
 </html>
 
 
+<<<<<<< HEAD
 
 
 <<!DOCTYPE html>
@@ -303,3 +470,5 @@ jesu_12171993@hotmail.com
 
 </body>
 </html>
+=======
+>>>>>>> origin/master

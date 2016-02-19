@@ -10,6 +10,10 @@ a:hover {text-decoration: none; color: red;}
 .p-menu ul > li > ul > li > a:hover {color: blue; background: transparent;}
 .reportarC {position: relative; top: -15px;}
 .noresize {resize: none;}
+<<<<<<< HEAD
+=======
+.p-izquierda {top: 23px;}
+>>>>>>> origin/master
 
 
 
