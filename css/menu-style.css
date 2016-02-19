@@ -1,12 +1,21 @@
 
 a:hover {text-decoration: none; color: red;}
 
-#menuCat, #menuLog, #menuHelp , #menuUser {background-color: #7D7A7A;}
+#menuCat, #menuLog, #menuHelp , #menuUser {background-color: #fff; }
 #etiquetasPost span > a {text-decoration: none; color: #000;}
 #etiquetasPost span > a:hover {text-decoration: none; color: #fff;}
 
 .p-menu ul > li > a {text-decoration: none; cursor: pointer; color: black; margin: 0px 6px 0px 6px;}
 .p-menu ul > li > a:hover {color: blue;}
-.p-menu ul > li > ul > li > a:hover {color: white; background: transparent;}
+.p-menu ul > li > ul > li > a:hover {color: blue; background: transparent;}
 .reportarC {position: relative; top: -15px;}
 .noresize {resize: none;}
+
+
+
+
+#sesion{
+
+	float: right;
+}
+

@@ -1,3 +1,8 @@
+<?php  
+  //include_once('../php/conexion.php');
+  //$id=$_GET['id'];
+  //$id_p = mysql_escape_string($id);
+?>
 <!DOCTYPE html>
 <html>
 <style type="text/css">.noresize {resize: none; }
@@ -50,7 +55,17 @@
   <div class="row p-superior">
     <div class="col-md-12 p-menu">
       <ul>
-        <li class="active"><a href="#">Inicio</a></li>
+        <li class="active"><a href="<?php echo "./index.php" ?>">Inicio</a></li>
+        <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuCat">
+          Mis Post<span class="caret"></span></a>
+          <ul class="dropdown-menu" id="menuCat">           
+            <li class="disabled"><a class="categoria" href="<?php echo "nuevoPost.php"; ?>">Nuevo Post</a></li>
+                <li><a class="categoria" href="#">Ver listado</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Reportes</a></li>
+        <li><a href="<?php echo "misDatos.php" ?>">Mis Datos</a></li>
         <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuUser">
           <img src="../assets/icons/exit2_7.png"><span class="caret"></span></a>
@@ -58,16 +73,6 @@
             <li><a  href="../index.php">Salir</a></li>
           </ul>
         </li>
-        <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuCat">
-          Mis Post<span class="caret"></span></a>
-          <ul class="dropdown-menu" id="menuCat">           
-            <li><a class="categoria" href="<?php echo "nuevoPost.php" ?>">Nuevo Post</a></li>
-                <li><a class="categoria" href="#">Administración</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Reportes</a></li>
-        <li><a href="<?php echo "misDatos.php" ?>">Mis Datos</a></li>
       </ul>
     </div><!-- Termina menú -->
   </div><!-- Termina div Superior (aquí va el menú)-->
@@ -78,39 +83,39 @@
       </div><!-- Termina columna izquierda -->
 
       <div class="col-md-8 p-centro">
-      <div class="alert alert-success" role="alert"><p class="text-center"><h3>Formulario: Nuevo Post</h3></p></div>
-      
-      <form role="form">
+      <div id="mensaje"></div>
+        <h4>Nuevo post</h4>      
+      <div class="form">
         <div class="form-group">
-    	     <label for="tituloPost" class="control-label">Titulo de la publicación</label>
+    	     <label for="tituloPost" class="control-label">*Titulo de la publicación</label>
            <div class="error1">
-      		    <input type="text" class="form-control" id="tituloPost" placeholder="Tu titulo...">
+      		    <input type="text" class="form-control" id="tituloPost" name="tituloPost" placeholder="Tu titulo...">
     	     </div>
   	    </div>
 
   	    <div class="form-group">
-	         <label for="resumenPost" class="control-label">Resumen de la publicación</label>
+	         <label for="resumenPost" class="control-label">*Resumen de la publicación</label>
 	         <div class="error2">
-      		    <input type="text" class="form-control" id="resumenPost" placeholder="Tu resumen...">
+            <textarea class="form-control noresize" id="resumenPost" name="resumenPost" rows="6" placeholder="Tu resumen..."></textarea>
            </div>
   	    </div>
 
   	    <div class="form-group">
-	         <label for="contenidoPost" class="control-label">Contenido de la publicación</label>
+	         <label for="contenidoPost" class="control-label">*Contenido de la publicación</label>
 	         <div class="error3">
-    	       <input type="text" class="form-control" id="contenidoPost" placeholder="Tu Pensamiento...">
+            <textarea class="form-control noresize" id="contenidoPost" name="contenidoPost" rows="6" placeholder="Tu Pensamiento..."></textarea>
     	     </div>
   	    </div>
 
   	    <div class="form-group">
 	         <label for="imagenPost" class="control-label">Imagen</label>
 	         <div class="">
-    	       <input type="file" id="imagenPost">
+    	       <input type="file" id="imagenPost" name="imagenPost">
     	     </div>
   	    </div>
 
       	<div class="form-group">
-	         <label for="linkPost" class="control-label">Links de video</label>
+	         <label for="linkPost" class="control-label">Link del video</label>
 	         <div class="">
     	       <input type="text" class="form-control" id="linkPost" placeholder="Tu Link...">
     	     </div>
@@ -123,9 +128,9 @@
     	     </div>
   	    </div>
 
-        <button class="btn btn-success">Enviar</button>    
-        <button class="btn btn-danger"><a href="../index.php">Cancelar</a></button>
-      </form><!-- Termina Formulario -->
+        <button class="btn btn-success" onclick="valPost()">Enviar</button>    
+        <a class="btn btn-danger" role="button" href="<?php echo "./index.php"; ?>">Cancelar</a>
+      </div><!-- Termina Formulario -->
 	    </div><!-- Termina columna central -->
 
     	<div class="col-md-2 p-derecha">
@@ -181,31 +186,9 @@
     <!-- cierra footer-->
        <!-- javascript -->
 
-  <!--<script src="/js/jquery-1.7.2.min.js"></script>
-  
-  <script src="/js/superfish.js"></script>
-  <script src="/js/jquery.mobilemenu.js"></script>
-  <script src="/js/jquery.tweet.js"></script>
-  <script src="/js/jquery.flexslider.js"></script>
-    <script src="/js/custom.js"></script>  -->
-  <!--<script src="/cms/js/bootstrap/js/bootstrap.min.js"></script> -->
-  <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-transition.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-alert.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-modal.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-dropdown.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-scrollspy.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-tab.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-tooltip.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-popover.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-button.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-collapse.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-carousel.js"></script>
-    <script src="http://www.ucol.mx/cms/js/bootstrap/js/bootstrap-typeahead.js"></script> 
-  <script src="http://www.ucol.mx/cms/js/jquery.mobilemenu.js"></script>  
-  <script src="http://www.ucol.mx/cms/js/jquery.liquidcarousel.js"></script>  
-  <script src="http://www.ucol.mx/cms/js/jquery.slides.js"></script> 
-  <script src="http://www.ucol.mx/cms/js/main.js"></script>
-    <script src="http://www.ucol.mx/cms/js/custom.js"></script>
+
+<?php require_once './estructura/scripts.php' ?>
+
 
 </body>
 </html>

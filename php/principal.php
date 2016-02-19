@@ -1,22 +1,29 @@
 <?php
     require_once('conexion.php');
-    $sql = "SELECT A.id_post,A.titulo, A.resumen, A.fecha,B.foto,B.id_usuario,C.nombre_completo FROM post as A, autores as B, usuarios as C WHERE A.estado = 4 AND A.id_autor = B.id_autor AND B.id_autor = C.id_usuario";
-    $data = new HelperMySql(SERVER,USER,PASSW,BD);
-    $co = $data -> query($sql); 
+    $sql = "SELECT A.id_autor,A.id_post,A.titulo, A.resumen, A.fecha,B.foto,B.id_usuario,C.nombre_completo, C.id_usuario
+    FROM post as A, autores as B, usuarios as C WHERE A.estado=1  AND A.id_autor = B.id_autor AND B.id_usuario = C.id_usuario";
+    $data = new MySQL(SERVER,USER,PASSW,BD);
+    $obtener = $data -> consulta($sql);
+    $registros = $data ->fetch_assoc($obtener);
+    $num = $data->num_rows($obtener);
 ?>
 <div id="comentarios">
-<?php  foreach($co as $row): ?>
+<?php  
+    if($num!=0){
+        do{
+
+?>
     <div id="contenedor"><!-- Contenedor de solo un post -->                
         <div class="row p-contenido">
             <!-- Columna Izquierda-->  
-            <div class="col-md-3 p-izquierda">
+            <div class="col-md-2 p-izquierda">
                 <div id="pImage"> 
-                    <a href="#" class="thumbnail"><img src="<?php echo $row['foto'] ?>" alt="myImage"></a>
-                    <p class="text-justify">
+                    <img class="img-responsive thumbnail" src="<?php echo $registros['foto'] ?>" alt="myImage">
+                    <p class="text-center">
                         <p class="text-center">
                         <strong>Autor</strong><br>
-                        <a class="blogAutor" data-toggle="tooltip" title="Visita su perfil" href="<?php echo "autor/miBlog.php?id=".$row["id_post"] ?>"> 
-                        <?php echo $row['nombre_completo'] ?></a>
+                        <a class="blogAutor" data-toggle="tooltip" title="Visita su perfil" href="<?php echo "blogAutor.php?id=".$registros["id_autor"] ?>"> 
+                        <?php echo $registros['nombre_completo'] ?></a>
                         </p>
                     </p>
                 </div>
@@ -25,28 +32,28 @@
             <div class="col-md-7 p-centro">
                 <!-- Titulo del post -->  
                 <div id="pTitle">
-                    <h3 class="text-left text-warning"> <?php echo $row['titulo'] ?> </h3>
+                    <h3 class="text-left text-warning"> <?php echo $registros['titulo'] ?> </h3>
                 </div>
 
                 <!-- Descripcion del post-->  
                 <div  id="pDescription">
                     <p class="text-justify">
                     <strong>Resumen:</strong><br>
-                        <?php echo $row['resumen'] ?>
+                        <?php echo $registros['resumen'] ?>
                     </p>
                 </div>
 
                 <!-- Fecha del post-->  
                 <div  id="pDate">
                    <p class="text-left">
-                   <strong>Publicado el: </strong> <?php echo $row['fecha'] ?>
+                   <strong>Publicado el: </strong> <?php echo $registros['fecha'] ?>
                    </p>
                 </div>
 
                 <!-- Link seguir leyendo del post-->  
                 <div id="pLeyendo">
                     <p class="text-left">
-                    <a class="btn btn-primary postAutor" href='<?php echo "post.php?id=".$row["id_post"] ?>'>Seguir Leyendo...</a>
+                    <a class="btn btn-primary postAutor" href='<?php echo "post.php?id=".$registros["id_post"] ?>'>Seguir Leyendo...</a>
                     </p>
                 </div>
 
@@ -60,14 +67,17 @@
             </div><!-- Termina columna central -->  
 
             <!-- Columna Derecha -->             
-            <div class="col-md-2 p-derecha">
+            <div class="col-md-3 p-derecha">
                 
             </div><!-- Termina columna derecha -->  
         </div><!-- Fin contenido -->
 
         <hr>
     </div><!-- Fin contenedor-->
-  <?php endforeach; ?>  
+  <?php  
+        }while($registros=$data->fetch_assoc($obtener));
+    }
+  ?>  
     <!-- Paginación -->
     <!-- <div id="pPaginacion">
             <ul class="pager">

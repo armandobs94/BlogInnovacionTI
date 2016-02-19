@@ -1,3 +1,9 @@
+<?php  
+  //include_once('../php/conexion.php');
+  //$id=$_GET['id'];
+  //$id_p = mysql_escape_string($id);
+
+?>
 <!DOCTYPE html>
 <html>
 <style type="text/css">.noresize {resize: none; }
@@ -14,6 +20,7 @@
   <link href="http://www.ucol.mx/cms/headerfooterapp.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="../css/menu-style.css">
   <script src="http://www.ucol.mx/cms/js/jquery.min.js"></script>   
+  <script type="text/javascript" src="../js/funcionesAutor.js"></script>
 </head>
 <body>
 
@@ -47,7 +54,17 @@
     <div class="row p-superior">
         <div class="col-md-12 p-menu">
             <ul>
-                <li class="active"><a href="#">Inicio</a></li>
+                <li class="active"><a href="<?php echo "./index.php"; ?>">Inicio</a></li>
+                <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuCat">
+                    Mis Post<span class="caret"></span></a>
+                    <ul class="dropdown-menu" id="menuCat">                     
+                        <li><a class="categoria" href="<?php echo "nuevoPost.php"; ?>">Nuevo Post</a></li>
+                        <li><a class="categoria" href="#">Ver listado</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Reportes</a></li>
+                <li><a href="<?php echo "misDatos.php"; ?>">Mis Datos</a></li>
                 <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuUser">
                     <img src="../assets/icons/exit2_7.png"><span class="caret"></span></a>
@@ -55,16 +72,6 @@
                         <li><a  href="../index.php">Salir</a></li>
                     </ul>
                 </li>
-                <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" data-targert="#menuCat">
-                    Mis Post<span class="caret"></span></a>
-                    <ul class="dropdown-menu" id="menuCat">                     
-                        <li><a class="categoria" href="<?php echo "nuevoPost.php" ?>">Nuevo Post</a></li>
-                        <li><a class="categoria" href="#">Administración</a></li>
-                    </ul>
-                </li>
-                <li><a href="#">Reportes</a></li>
-                <li><a href="<?php echo "misDatos.php" ?>">Mis Datos</a></li>
             </ul>
         </div><!-- Termina menú -->
     </div><!-- Termina div Superior (aquí va el menú)-->
@@ -75,9 +82,9 @@
         </div><!-- Termina columna izquierda -->
 
         <div class="col-md-8 p-centro">
-        <div class="alert alert-success" role="alert"><p class="text-center"><h3>Formulario: Mis Datos Personales</h3></p></div>
+        <div class="alert alert-danger" role="alert"><p class="text-left">Formulario: Mis Datos Personales</p></div>
  
-            <form role="form" id="formudata">
+            <form role="form" id="formudata" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="aboutme" class="control-label">Acerca de mi</label>
                 <div class="error1">
@@ -93,8 +100,9 @@
                 </div>
             </div>
 
-            <div class="form-group text-right">
+            <div class="form-group">
                 <button class="btn btn-success">Guardar</button>
+                <a class="btn btn-danger" role="button" href="./index.php">Cancelar</a>
             </div>
             <hr>
             </form>          
